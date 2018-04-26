@@ -15,6 +15,7 @@ import android.widget.TextView;
 import org.chengpx.a2trafficlight.util.MyViewUtils;
 import org.chengpx.mylib.DataUtils;
 import org.chengpx.mylib.HttpUtils;
+import org.chengpx.mylib.RequestPool;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -90,7 +91,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Class<Map> mapClass = Map.class;
         sRequestIndex = 0;
         values.put("TrafficLightId", sTrafficLightIdArr[sRequestIndex]);
-        HttpUtils.getInstance().sendPost("http://192.168.2.19:9090/transportservice/type/jason/action/GetTrafficLightConfigAction.do",
+        /*HttpUtils.getInstance().sendPost("http://192.168.2.19:9090/transportservice/type/jason/action/GetTrafficLightConfigAction.do",
+                values, new MyCalBack(Map.class));*/
+        RequestPool.getInstance().add("http://192.168.2.19:9090/transportservice/type/jason/action/GetTrafficLightConfigAction.do",
                 values, new MyCalBack(Map.class));
     }
 
@@ -178,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 initLvData(mTrafficLightInfoList);
             }
+            RequestPool.getInstance().next();
         }
 
     }

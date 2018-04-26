@@ -174,14 +174,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             sRequestIndex++;
             if (sRequestIndex < sTrafficLightIdArr.length) {
                 Map<String, String> values = new HashMap<>();
-                Class<Map> mapClass = Map.class;
                 values.put("TrafficLightId", sTrafficLightIdArr[sRequestIndex]);
-                HttpUtils.getInstance().sendPost("http://192.168.2.19:9090/transportservice/type/jason/action/GetTrafficLightConfigAction.do",
+                RequestPool.getInstance().next();
+                RequestPool.getInstance().add("http://192.168.2.19:9090/transportservice/type/jason/action/GetTrafficLightConfigAction.do",
                         values, this);
+                /*HttpUtils.getInstance().sendPost("http://192.168.2.19:9090/transportservice/type/jason/action/GetTrafficLightConfigAction.do",
+                        values, this);*/
             } else {
                 initLvData(mTrafficLightInfoList);
+                RequestPool.getInstance().next();
             }
-            RequestPool.getInstance().next();
         }
 
     }

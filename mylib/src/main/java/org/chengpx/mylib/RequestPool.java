@@ -6,6 +6,11 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Semaphore;
 
 /**
+ * 请求池<br/>
+ * 向池中添加构建 post 请求需要的 url, 请求参数 json, 以及请求成功后的回调接口对象，
+ * 请求池完成请求的发送<br/>
+ * 请求池每次只发送一个请求, 下一次的请求发送之前必须调用 next()
+ * <p>
  * create at 2018/4/26 15:33 by chengpx
  */
 public class RequestPool {
@@ -29,6 +34,14 @@ public class RequestPool {
         return sRequestPool;
     }
 
+    /**
+     * 添加一个请求
+     *
+     * @param url      协议地址
+     * @param req      请求参数
+     * @param callBack 回调接口
+     * @param <Req>    请求参数封装体类型
+     */
     public <Req> void add(String url, Req req, HttpUtils.Callback callBack) {
         if (url == null || req == null || callBack == null) {
             return;
@@ -60,7 +73,6 @@ public class RequestPool {
                     continue;
                 }
                 try {
-                    mSemaphore.acquire();
                     mRunnableArrayBlockingQueue.put(myRequest);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -78,6 +90,7 @@ public class RequestPool {
                 try {
                     MyRequest myRequest = mRunnableArrayBlockingQueue.take();
                     HttpUtils.getInstance().sendPost(myRequest.getUrl(), myRequest.getReq(), myRequest.getCallBack());
+                    mSemaphore.acquire();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -111,6 +124,9 @@ public class RequestPool {
 
     }
 
+    /**
+     * 发送下一个请求
+     */
     public void next() {
         mSemaphore.release();
     }

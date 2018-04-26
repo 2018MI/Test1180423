@@ -1,1 +1,4 @@
-include ':app', ':$1$userlogin', ':$2$trafficlight'
+include ':app', ':$1$userlogin', ':$2$trafficlight', ':$3$caraccountrecharge', ':$5$sense', ':mylib'
+// add by chengpx
+include 'MPChartLib'
+// add by chengpx

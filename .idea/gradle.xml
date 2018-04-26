@@ -10,7 +10,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/$1$userlogin" />
             <option value="$PROJECT_DIR$/$2$trafficlight" />
+            <option value="$PROJECT_DIR$/$3$caraccountrecharge" />
+            <option value="$PROJECT_DIR$/$5$sense" />
+            <option value="$PROJECT_DIR$/MPChartLib" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/mylib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

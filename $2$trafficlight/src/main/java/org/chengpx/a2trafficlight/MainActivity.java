@@ -12,9 +12,9 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.chengpx.a2trafficlight.util.DataUtils;
-import org.chengpx.a2trafficlight.util.HttpUtils;
 import org.chengpx.a2trafficlight.util.MyViewUtils;
+import org.chengpx.mylib.DataUtils;
+import org.chengpx.mylib.HttpUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -65,10 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             new SortRule("TrafficLightId", SortRule.DESC),
             new SortRule("RedTime", SortRule.ASC),
             new SortRule("RedTime", SortRule.DESC),
-            new SortRule("YellowTime", SortRule.ASC),
-            new SortRule("YellowTime", SortRule.DESC),
             new SortRule("GreenTime", SortRule.ASC),
             new SortRule("GreenTime", SortRule.DESC),
+            new SortRule("YellowTime", SortRule.ASC),
+            new SortRule("YellowTime", SortRule.DESC),
     };
     /**
      * activity 是否是 onCreate?
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Class<Map> mapClass = Map.class;
         sRequestIndex = 0;
         values.put("TrafficLightId", sTrafficLightIdArr[sRequestIndex]);
-        HttpUtils.getInstance().sendPost("http://192.168.2.19:8080/transportservice/type/jason/action/GetTrafficLightConfigAction.do",
+        HttpUtils.getInstance().sendPost("http://192.168.2.19:9090/transportservice/type/jason/action/GetTrafficLightConfigAction.do",
                 values, new MyCalBack(Map.class));
     }
 
@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Map<String, String> values = new HashMap<>();
                 Class<Map> mapClass = Map.class;
                 values.put("TrafficLightId", sTrafficLightIdArr[sRequestIndex]);
-                HttpUtils.getInstance().sendPost("http://192.168.2.19:8080/transportservice/type/jason/action/GetTrafficLightConfigAction.do",
+                HttpUtils.getInstance().sendPost("http://192.168.2.19:9090/transportservice/type/jason/action/GetTrafficLightConfigAction.do",
                         values, this);
             } else {
                 initLvData(mTrafficLightInfoList);

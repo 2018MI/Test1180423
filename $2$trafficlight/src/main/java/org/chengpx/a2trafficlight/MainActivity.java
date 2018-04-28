@@ -13,9 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.chengpx.a2trafficlight.util.MyViewUtils;
-import org.chengpx.mylib.DataUtils;
-import org.chengpx.mylib.HttpUtils;
-import org.chengpx.mylib.RequestPool;
+import org.chengpx.mylib.common.DataUtils;
+import org.chengpx.mylib.http.HttpUtils;
+import org.chengpx.mylib.http.RequestPool;
 
 import java.util.ArrayList;
 import java.util.Collections;

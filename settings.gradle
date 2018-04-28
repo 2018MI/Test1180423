@@ -1,4 +1,5 @@
 include ':app', ':$1$userlogin', ':$2$trafficlight', ':$3$caraccountrecharge', ':$5$sense', ':mylib'
 // add by chengpx
 include 'MPChartLib'
+include 'SlidingMenuLib'
 // add by chengpx

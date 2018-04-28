@@ -1,55 +1,87 @@
 package org.chengpx.a3caraccountrecharge.domain;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+import java.util.Date;
+
 /**
  * create at 2018/4/24 9:36 by chengpx
  */
+@DatabaseTable(tableName = "car")
 public class CarBean {
 
-
+    @DatabaseField(generatedId = true)
+    private Integer id;
     /**
      * CarId : 2
      */
-    private int CarId;
+    @DatabaseField(columnName = "CarId")
+    private Integer CarId;
     /**
      * Balance : 68
      */
-    private int Balance;
+    @DatabaseField(persisted = false)// 该字段不持久化
+    private Integer Balance;
     /**
      * Money : 200
      */
-    private int Money;
+    @DatabaseField(columnName = "Money")
+    private Integer Money;
+    /**
+     * 充值时间
+     */
+    @DatabaseField(columnName = "rechargeDate")
+    private Date rechargeDate;
 
+    public Integer getId() {
+        return id;
+    }
 
-    public int getCarId() {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getCarId() {
         return CarId;
     }
 
-    public void setCarId(int CarId) {
-        this.CarId = CarId;
+    public void setCarId(Integer carId) {
+        CarId = carId;
     }
 
-    public int getBalance() {
+    public Integer getBalance() {
         return Balance;
     }
 
-    public void setBalance(int Balance) {
-        this.Balance = Balance;
+    public void setBalance(Integer balance) {
+        Balance = balance;
     }
 
-    public int getMoney() {
+    public Integer getMoney() {
         return Money;
     }
 
-    public void setMoney(int Money) {
-        this.Money = Money;
+    public void setMoney(Integer money) {
+        Money = money;
+    }
+
+    public Date getRechargeDate() {
+        return rechargeDate;
+    }
+
+    public void setRechargeDate(Date rechargeDate) {
+        this.rechargeDate = rechargeDate;
     }
 
     @Override
     public String toString() {
         return "CarBean{" +
-                "CarId=" + CarId +
+                "id=" + id +
+                ", CarId=" + CarId +
                 ", Balance=" + Balance +
                 ", Money=" + Money +
+                ", rechargeDate=" + rechargeDate +
                 '}';
     }
 

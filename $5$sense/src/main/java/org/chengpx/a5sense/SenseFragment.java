@@ -4,17 +4,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,8 +26,8 @@ import com.github.mikephil.charting.data.LineDataSet;
 
 import org.chengpx.a5sense.util.MyViewUtils;
 import org.chengpx.mylib.AppException;
-import org.chengpx.mylib.DataUtils;
-import org.chengpx.mylib.HttpUtils;
+import org.chengpx.mylib.common.DataUtils;
+import org.chengpx.mylib.http.HttpUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

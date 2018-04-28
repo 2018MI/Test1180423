@@ -35,6 +35,7 @@ public class CarBillManagerFragment extends Fragment implements View.OnClickList
     private ListView carbalancerecharge_lv_data;
 
     private FragmentActivity mFragmentActivity;
+    private TextView carbalancerecharge_tv_defaluttip;
     private List<CarBean> mCarBeanList;
     private String[] mRulsStrArr = {
             "时间升序", "时间降序"
@@ -66,12 +67,25 @@ public class CarBillManagerFragment extends Fragment implements View.OnClickList
         mSpinnerAdapter.notifyDataSetChanged();
         mMyAdapter = new MyAdapter();
         carbalancerecharge_lv_data.setAdapter(mMyAdapter);
+        mMyAdapter.notifyDataSetChanged();
+        showDataUI();
     }
 
     private void initData() {
         carbalancerecharge_spinner_rule.setSelection(1);
         mCarBeanList = CarDao.getInstance(mFragmentActivity).select();
         Collections.sort(mCarBeanList, this);
+        showDataUI();
+    }
+
+    private void showDataUI() {
+        if (mCarBeanList == null || mCarBeanList.size() == 0) {
+            carbalancerecharge_tv_defaluttip.setVisibility(View.VISIBLE);
+            carbalancerecharge_lv_data.setVisibility(View.GONE);
+        } else {
+            carbalancerecharge_tv_defaluttip.setVisibility(View.GONE);
+            carbalancerecharge_lv_data.setVisibility(View.VISIBLE);
+        }
     }
 
     private void initListener() {
@@ -82,6 +96,8 @@ public class CarBillManagerFragment extends Fragment implements View.OnClickList
         carbalancerecharge_spinner_rule = (Spinner) view.findViewById(R.id.carbalancerecharge_spinner_rule);
         carbalancerecharge_btn_search = (Button) view.findViewById(R.id.carbalancerecharge_btn_search);
         carbalancerecharge_lv_data = (ListView) view.findViewById(R.id.carbalancerecharge_lv_data);
+        carbalancerecharge_tv_defaluttip = (TextView) view.findViewById(R.id.carbalancerecharge_tv_defaluttip);
+        carbalancerecharge_tv_defaluttip.setOnClickListener(this);
     }
 
     @Override

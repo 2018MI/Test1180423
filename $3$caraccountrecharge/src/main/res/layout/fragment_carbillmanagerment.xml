@@ -63,10 +63,25 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/carbalancerecharge_lv_data"
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/carbalancerecharge_lv_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/carbalancerecharge_tv_defaluttip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="暂无数据" />
+
+    </FrameLayout>
 
 </LinearLayout>

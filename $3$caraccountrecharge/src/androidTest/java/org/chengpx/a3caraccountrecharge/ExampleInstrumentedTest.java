@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.chengpx.a3caraccountrecharge.dao.UserDao;
+import org.chengpx.a3caraccountrecharge.domain.UserBean;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -23,4 +25,13 @@ public class ExampleInstrumentedTest {
 
         assertEquals("org.chengpx.a3caraccountrecharge", appContext.getPackageName());
     }
+
+    @Test
+    public void test1() {
+        UserBean userBean = new UserBean();
+        userBean.setUname("admin");
+        int insert = UserDao.getInstance(InstrumentationRegistry.getTargetContext()).insert(userBean);
+        System.out.println("UserDao insert: " + insert);
+    }
+
 }

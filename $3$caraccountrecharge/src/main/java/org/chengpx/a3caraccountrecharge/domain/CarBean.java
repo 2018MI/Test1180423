@@ -33,6 +33,8 @@ public class CarBean {
      */
     @DatabaseField(columnName = "rechargeDate")
     private Date rechargeDate;
+    @DatabaseField(columnName = "fk_uid", foreignAutoRefresh = true, foreignColumnName = "id", foreign = true)
+    private UserBean user;
 
     public Integer getId() {
         return id;
@@ -74,6 +76,14 @@ public class CarBean {
         this.rechargeDate = rechargeDate;
     }
 
+    public UserBean getUser() {
+        return user;
+    }
+
+    public void setUser(UserBean user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "CarBean{" +
@@ -82,6 +92,7 @@ public class CarBean {
                 ", Balance=" + Balance +
                 ", Money=" + Money +
                 ", rechargeDate=" + rechargeDate +
+                ", user=" + user +
                 '}';
     }
 

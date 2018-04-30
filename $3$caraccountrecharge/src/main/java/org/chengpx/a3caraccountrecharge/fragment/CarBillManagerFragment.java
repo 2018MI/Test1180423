@@ -1,4 +1,4 @@
-package org.chengpx.a3caraccountrecharge;
+package org.chengpx.a3caraccountrecharge.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,8 +15,10 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.chengpx.a3caraccountrecharge.R;
 import org.chengpx.a3caraccountrecharge.dao.CarDao;
 import org.chengpx.a3caraccountrecharge.domain.CarBean;
+import org.chengpx.a3caraccountrecharge.domain.UserBean;
 
 import java.lang.reflect.Field;
 import java.text.DateFormat;
@@ -178,7 +180,10 @@ public class CarBillManagerFragment extends Fragment implements View.OnClickList
             viewHolder.getCarbalancerecharge_tv_num().setText(position + "");
             viewHolder.getCarbalancerecharge_tv_CarId().setText(carBean.getCarId() + "");
             viewHolder.getCarbalancerecharge_tv_Money().setText(carBean.getMoney() + "");
-            viewHolder.getCarbalancerecharge_tv_operator().setText("admin");
+            UserBean userBean = carBean.getUser();
+            if (userBean != null) {
+                viewHolder.getCarbalancerecharge_tv_operator().setText(userBean.getUname());
+            }
             viewHolder.getCarbalancerecharge_tv_rechargeDate().setText(mSimpleDateFormat.format(carBean.getRechargeDate()));
             return convertView;
         }

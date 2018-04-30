@@ -1,4 +1,4 @@
-package org.chengpx.a3caraccountrecharge;
+package org.chengpx.a3caraccountrecharge.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -17,9 +17,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.chengpx.a3caraccountrecharge.R;
 import org.chengpx.a3caraccountrecharge.dao.CarDao;
+import org.chengpx.a3caraccountrecharge.dao.UserDao;
 import org.chengpx.a3caraccountrecharge.domain.CarBean;
 import org.chengpx.a3caraccountrecharge.domain.ServerInfoBean;
+import org.chengpx.a3caraccountrecharge.domain.UserBean;
 import org.chengpx.a3caraccountrecharge.util.MyViewUtils;
 import org.chengpx.mylib.http.HttpUtils;
 
@@ -203,6 +206,7 @@ public class CarBalanceRechargeFragment extends Fragment {
                 Log.d(sTag, serverInfoBean.toString());
                 Toast.makeText(sActivity, serverInfoBean.getResult(), Toast.LENGTH_SHORT).show();
                 mReqCarBen.setRechargeDate(new Date());
+                mReqCarBen.setUser(UserDao.getInstance(sActivity).select("uname", "admin"));
                 int insert = CarDao.getInstance(sActivity).insert(mReqCarBen);
                 Log.d(sTag, "CarDao insert: " + insert);
                 sReqIndex = 0;

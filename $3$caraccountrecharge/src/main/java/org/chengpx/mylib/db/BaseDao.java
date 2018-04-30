@@ -5,6 +5,8 @@ import android.content.Context;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 
+import org.chengpx.a3caraccountrecharge.domain.UserBean;
+
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.sql.SQLException;
@@ -69,6 +71,19 @@ public abstract class BaseDao<T> {
             return mDao.queryForAll();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        return null;
+    }
+
+    public T select(String field, String val) {
+        List list = null;
+        try {
+            list = mDao.queryForEq(field, val);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (list != null && !list.isEmpty()) {
+            return (T) list.get(0);
         }
         return null;
     }

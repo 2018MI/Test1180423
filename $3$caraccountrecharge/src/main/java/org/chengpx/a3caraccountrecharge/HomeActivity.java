@@ -9,6 +9,8 @@ import android.widget.FrameLayout;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
+import org.chengpx.a3caraccountrecharge.fragment.SlidingMenuLeftFragment;
+
 /**
  * create at 2018/4/28 10:58 by chengpx
  */

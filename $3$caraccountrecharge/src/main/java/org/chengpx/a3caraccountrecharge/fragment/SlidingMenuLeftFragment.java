@@ -1,4 +1,4 @@
-package org.chengpx.a3caraccountrecharge;
+package org.chengpx.a3caraccountrecharge.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import org.chengpx.a3caraccountrecharge.R;
+
 /**
  * create at 2018/4/28 12:45 by chengpx
  */
@@ -20,11 +22,13 @@ public class SlidingMenuLeftFragment extends Fragment implements AdapterView.OnI
 
     private String[] mItemArr = {
             "小车充值",
-            "账单管理"
+            "账单管理",
+            "车管局车辆账户管理功能"
     };
     private Fragment[] mFragmentArr = {
             new CarBalanceRechargeFragment(),
-            new CarBillManagerFragment()
+            new CarBillManagerFragment(),
+            new CarManagerFragment()
     };
     private ListView car_lv_slidingmenleft;
     private FragmentActivity mFragmentActivity;
